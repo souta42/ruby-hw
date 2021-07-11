@@ -97,76 +97,76 @@ end
 
 #5 Медиана пробега
 def mid_miles(cars)
-	mass = []
+	arr = []
 
 	cars.each do |car|
-		mass.push(car[:mileage])
+		arr.push(car[:mileage])
 	end
 
-	avg = mass.length / 2
+	avg = arr.length / 2
 
-	return mass.sort[avg - 1]
+	return arr.sort[avg - 1]
 end
 
 #6 Медиана года выпуска
 def mid_years(cars)
-	mass = []
+	arr = []
 
 	cars.each do |car|
-		mass.push(car[:year])
+		arr.push(car[:year])
 	end
 
-	avg = mass.length / 2
+	avg = arr.length / 2
 
-	return mass.sort[avg - 1]
+	return arr.sort[avg - 1]
 end
 
 #7 Медиана возраста
 def mid_age(cars)
-	mass = []
+	arr = []
 
 	cars.each do |car|
-		mass.push(2021 - car[:year])
+		arr.push(2021 - car[:year])
 	end
 
-	avg = mass.length / 2
+	avg = arr.length / 2
 
-	return mass.sort[avg - 1]
+	return arr.sort[avg - 1]
 end
 
 #8 Медиана пробега за год
 def mid_miles_year(cars)
     y = (Time.now).year
-	mass = []
+	arr = []
     cars.each { |car| car[:mpy] = car[:mileage] / (y - car[:year]) }
 
 	cars.each do |mpy|
-		mass.push(mpy[:mpy])
+		arr.push(mpy[:mpy])
 	end
 
-	avg = mass.length / 2
-    return mass.sort[avg - 1]
+	avg = arr.length / 2
+    return arr.sort[avg - 1]
 end
 
 #9 Самый популярный цвет авто
 def common_color(cars)
 	stat = {}
-	mass = []
+	arr = []
 	save = 1
     cars.each do |car|
 		c = car[:color]
 		stat[c] = stat.has_key?(c) ? stat[c] + 1 : 1
 	end
 
-	stat.each_value{|val| val > save ? mass.push(stat.key(val)) : save = val}
+	stat.each_value{|val| val > save ? arr.push(stat.key(val)) : save = val}
 
-	return mass
+	return arr
 end
 
 #10 Самый редкий цвет авто
 def rare_color(cars)
 	stat = {}
-	mass = []
+	arr = []
 	save = 1
     cars.each do |car|
 		c = car[:color]
@@ -174,9 +174,9 @@ def rare_color(cars)
 	end
 
 	stat.each do |res|
-		sub_mass = res
-		sub_mass[1] <= save ? mass.push(sub_mass[0]) : save += 1
+		sub_arr = res
+		sub_arr[1] <= save ? arr.push(sub_arr[0]) : save += 1
 	end
 
-	return mass
+	return arr
 end
